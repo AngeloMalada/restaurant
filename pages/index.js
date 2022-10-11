@@ -11,7 +11,7 @@ export default function Home() {
       <Head>
         <title>Restaurant</title>
         <meta name='description' content='Restaurant' />
-        <link rel='shortcut icon' href='/images/favicon.ico' />
+        <link rel='icon' href='favicon.png' />
       </Head>
     </div>
   );
