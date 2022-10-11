@@ -11,8 +11,9 @@ export default function Home() {
       <Head>
         <title>Restaurant</title>
         <meta name='description' content='Restaurant' />
+        <link rel='shortcut icon' href='/images/favicon.ico' />
 
-        <link
+        {/* <link
           rel='apple-touch-icon'
           sizes='180x180'
           href='/public/apple-touch-icon.png'
@@ -36,7 +37,7 @@ export default function Home() {
           color='#5bbad5'
         />
         <meta name='msapplication-TileColor' content='#da532c' />
-        <meta name='theme-color' content='#ffffff' />
+        <meta name='theme-color' content='#ffffff' /> */}
       </Head>
     </div>
   );
