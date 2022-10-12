@@ -1,12 +1,10 @@
 $icon-medium: 24px;
 
-.hamburger {
-  display: none;
-  height: 10vh;
-  background-color: red;
+.outerDiv {
+  position: sticky;
+  top: 0;
 }
 .container {
-  background-color: #3bceac;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,6 +16,12 @@ $icon-medium: 24px;
   position: sticky;
   text-transform: uppercase;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
   .item {
     width: 200px;
     color: white;
@@ -71,7 +75,11 @@ $icon-medium: 24px;
   left: 0px;
   height: 90vh;
   width: 40%;
-  background-color: blue;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
   .mobileList {
     display: flex;
     flex-direction: column;
@@ -87,6 +95,15 @@ $icon-medium: 24px;
       cursor: pointer;
     }
   }
+}
+
+.hamburger {
+  display: none;
+  height: 10vh;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 @media screen and (max-width: 768px) {

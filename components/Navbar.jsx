@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     // main div
-    <div>
+    <div className={styles.outerDiv}>
       {/* desktop navbar */}
       <div className={styles.container}>
         <div className={styles.item}>

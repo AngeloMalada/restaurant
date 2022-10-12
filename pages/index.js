@@ -13,6 +13,9 @@ export default function Home() {
         <meta name='description' content='Restaurant' />
         <link rel='icon' href='favicon.png' />
       </Head>
+      <div className={styles.red}>
+        <Navbar />
+      </div>
     </div>
   );
 }
