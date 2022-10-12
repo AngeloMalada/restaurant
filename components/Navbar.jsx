@@ -70,7 +70,7 @@ const Navbar = () => {
             x: 0,
           }}
           transition={{
-            duration: 1,
+            duration: 0.3,
             ease: "easeInOut",
           }}
           className={styles.mobileMenu}
