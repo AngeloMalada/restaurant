@@ -1,4 +1,6 @@
 .red {
-  height: 200vh;
-  background-image: url("../images/ocalinko.jpeg");
+  background-image: url("/dinner.jpg");
+}
+.inner {
+  height: 100vh;
 }

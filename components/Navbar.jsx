@@ -7,6 +7,7 @@ import { logo } from "../images/logo.svg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
   // logic for opening hamburger menu
@@ -43,8 +44,12 @@ const Navbar = () => {
             <li className={styles.listItem}>o nama</li>
           </ul>
         </div>
+        {/* <div className={styles.item}>
+         
+        </div> */}
         <div className={styles.item}>
           <p className={styles.text}>kontakt</p>
+          <HiOutlineShoppingCart />
         </div>
       </div>
       {/* mobile navbar */}

@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import { logo } from "../images/logo.svg";
+import Slider from "../components/Slider";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
       </Head>
       <div className={styles.red}>
         <Navbar />
+        <Slider />
+        <div className={styles.inner}></div>
       </div>
     </div>
   );
