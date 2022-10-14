@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
 import styles from "../styles/Slider.module.scss";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
@@ -32,7 +33,10 @@ const Slider = () => {
       >
         {images.map((img, i) => (
           <div className={styles.imageContainer} key={i}>
-            <Image src={img} alt='' layout='fill' objectFit='fill' />
+            <div className={styles.text}>
+              <p className={styles.text2}>Rezerviraj</p>
+            </div>
+            <Image src={img} alt='' layout='fill' objectFit='cover' />
           </div>
         ))}
       </div>
