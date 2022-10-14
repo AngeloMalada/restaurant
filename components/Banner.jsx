@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Image from "next/image";
-import styles from "../styles/Slider.module.scss";
+import styles from "../styles/Banner.module.scss";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const Slider = () => {
@@ -16,9 +16,9 @@ const Slider = () => {
   };
 
   const images = [
-    "/images/dinner.jpg",
-    "/images/dinner2.jpg",
-    "/images/dinner3.jpg",
+    "/images/pizza.png",
+    "/images/pizza.png",
+    "/images/pizza.png",
   ];
 
   return (
@@ -42,7 +42,13 @@ const Slider = () => {
             <div className={styles.text}>
               <p className={styles.text2}>Rezerviraj</p>
             </div>
-            <Image src={img} alt='' layout='fill' objectFit='cover' />
+            <Image
+              className={styles.image}
+              src={img}
+              alt='pizza'
+              layout='fill'
+              objectFit='contain'
+            />
           </div>
         ))}
       </div>

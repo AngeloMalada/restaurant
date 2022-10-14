@@ -1,0 +1,72 @@
+.container {
+  height: 90vh;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  .arrowContainer {
+    position: absolute;
+    z-index: 10;
+    justify-content: center;
+    align-items: centers;
+    cursor: pointer;
+    top: 0;
+
+    .arrow {
+      color: white;
+      height: 80vh;
+      width: 100px;
+      padding-left: 10px;
+      padding-right: 10px;
+      cursor: pointer;
+    }
+  }
+  .wrapper {
+    height: 100vh;
+    width: 300vw;
+    display: flex;
+    scroll-behavior: smooth;
+    transition: all 1s ease-in-out;
+    .imageContainer {
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+
+      .text {
+        color: green;
+        position: absolute;
+        font-size: 100px;
+        font-weight: bold;
+        z-index: 20;
+        height: 80vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text2 {
+          background: rgba(235, 232, 232, 0.3);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          border-radius: 10px;
+          color: white;
+          padding: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    .arrowContainer {
+      .arrow {
+        width: 40px;
+      }
+    }
+    .text2 {
+      font-size: 40px;
+    }
+  }
+}
