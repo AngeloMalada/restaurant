@@ -19,7 +19,9 @@ const Slider = () => {
   const images = ["/dinner.jpg", "/dinner2.jpg", "/dinner3.jpg"];
 
   return (
+    //hero banner
     <div className={styles.container}>
+      {/* left arrow  */}
       <div
         className={styles.arrowContainer}
         style={{ left: 0 }}
@@ -27,6 +29,7 @@ const Slider = () => {
       >
         <AiOutlineArrowLeft className={styles.arrow} />
       </div>
+      {/* photos */}
       <div
         className={styles.wrapper}
         style={{ transform: `translateX(${-100 * slide}vw)` }}
@@ -40,6 +43,7 @@ const Slider = () => {
           </div>
         ))}
       </div>
+      {/* right arrow */}
       <div
         className={styles.arrowContainer}
         style={{ right: 0 }}
