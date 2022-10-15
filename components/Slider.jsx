@@ -16,14 +16,15 @@ const Slider = () => {
   };
 
   const images = [
-    "/images/dinner.jpg",
-    "/images/dinner2.jpg",
-    "/images/dinner3.jpg",
+    "/images/burger.png",
+    "/images/pizza.png",
+    "/images/rissoto.png",
   ];
 
   return (
     //hero banner
     <div className={styles.container}>
+      <p className={styles.akcija}>Dnevne akcije</p>
       {/* left arrow  */}
       <div
         className={styles.arrowContainer}
@@ -40,9 +41,26 @@ const Slider = () => {
         {images.map((img, i) => (
           <div className={styles.imageContainer} key={i}>
             <div className={styles.text}>
-              <p className={styles.text2}>Rezerviraj</p>
+              <h1>Lorem, ipsum dolor.</h1>
+              <h2>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse,
+                maxime!
+              </h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Corporis sed, quisquam eaque assumenda facere non sit
+                repudiandae vitae asperiores debitis!
+              </p>
             </div>
-            <Image src={img} alt='' layout='fill' objectFit='cover' />
+            <div className={styles.image}>
+              <Image
+                src={img}
+                alt=''
+                height={500}
+                width={500}
+                objectFit='contain'
+              />
+            </div>
           </div>
         ))}
       </div>

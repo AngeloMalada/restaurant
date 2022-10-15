@@ -3,6 +3,17 @@
   background-color: white;
   position: relative;
   overflow: hidden;
+
+  .akcija {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
   .arrowContainer {
     position: absolute;
     z-index: 10;
@@ -12,8 +23,8 @@
     top: 0;
 
     .arrow {
-      color: white;
-      height: 80vh;
+      color: black;
+      height: 100vh;
       width: 100px;
       padding-left: 10px;
       padding-right: 10px;
@@ -30,28 +41,23 @@
       height: 100vh;
       width: 100vw;
       position: relative;
-      .text {
-        color: green;
-        position: absolute;
-        font-size: 100px;
-        font-weight: bold;
-        z-index: 20;
-        height: 80vh;
-        width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 150px;
+      padding-left: 150px;
+      .image {
         display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
         align-items: center;
         justify-content: center;
-
-        .text2 {
-          background: rgba(235, 232, 232, 0.3);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px);
-          border-radius: 10px;
-          color: white;
-          padding: 10px;
-          cursor: pointer;
-        }
       }
     }
   }
@@ -64,8 +70,25 @@
         width: 40px;
       }
     }
-    .text2 {
-      font-size: 40px;
+    .imageContainer {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      flex-direction: column;
+      height: 80vh !important;
+      justify-content: space-around !important;
+      .image {
+        justify-content: flex-start !important;
+        transform: scale(0.8);
+      }
+      .text {
+        font-size: 24px;
+        justify-content: flex-start !important;
+        padding-top: 150px;
+        font-size: 10px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
   }
 }
