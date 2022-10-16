@@ -5,6 +5,7 @@ $icon-medium: 24px;
   top: 0;
   height: 10vh;
   z-index: 20;
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -37,6 +38,30 @@ $icon-medium: 24px;
         width: $icon-medium;
         height: $icon-medium;
       }
+
+      .cart {
+        position: relative;
+        .cartIcon {
+          height: 24px;
+          width: 24px;
+        }
+
+        .cartItems {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: white;
+          padding: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: black;
+        }
+      }
     }
     .item:first-child {
       display: flex;
@@ -51,6 +76,7 @@ $icon-medium: 24px;
       flex: 1;
       display: flex;
       justify-content: flex-start;
+      align-items: center;
     }
 
     .list {

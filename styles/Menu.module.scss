@@ -1,31 +1,38 @@
 .container {
-  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
 
-  .text {
-    font-size: 24px;
-    color: #444;
-    width: 70%;
+  .textBg {
+    background-color: #222;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 30vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+
+    .title {
+      color: white;
+    }
+    .text {
+      font-size: 24px;
+      color: white;
+      width: 70%;
+    }
   }
+
   .wrapper {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .title {
-    text-align: center;
-  }
-
-  .desc {
-    width: 90%;
-    text-align: center;
   }
 }

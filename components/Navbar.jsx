@@ -49,7 +49,11 @@ const Navbar = () => {
         </div> */}
         <div className={styles.item}>
           <p className={styles.text}>kontakt</p>
-          <HiOutlineShoppingCart />
+          <div className={styles.cart}>
+            <HiOutlineShoppingCart className={styles.cartIcon} />
+
+            <div className={styles.cartItems}>2</div>
+          </div>
         </div>
       </div>
       {/* mobile navbar */}
