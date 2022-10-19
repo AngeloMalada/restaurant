@@ -8,6 +8,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Navbar = () => {
   // logic for opening hamburger menu
@@ -15,6 +17,8 @@ const Navbar = () => {
   const handleOpenHamburger = () => {
     setOpenHambuger((prev) => !prev);
   };
+
+  const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     // main div
@@ -32,12 +36,14 @@ const Navbar = () => {
             <li className={styles.listItem}>dobrodosli</li>
             <li className={styles.listItem}>jelovnik</li>
             <li className={styles.listItem}>
-              <Image
-                className={styles.image}
-                src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
-                height='80px'
-                width='80px'
-              />
+              <Link href='/'>
+                <Image
+                  className={styles.image}
+                  src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
+                  height='80px'
+                  width='80px'
+                />
+              </Link>
               {/* <MdFastfood className={styles.icon} /> */}
             </li>
             <li className={styles.listItem}>rezervacije</li>
@@ -49,11 +55,13 @@ const Navbar = () => {
         </div> */}
         <div className={styles.item}>
           <p className={styles.text}>kontakt</p>
-          <div className={styles.cart}>
-            <HiOutlineShoppingCart className={styles.cartIcon} />
+          <Link href='/cart'>
+            <div className={styles.cart}>
+              <HiOutlineShoppingCart className={styles.cartIcon} />
 
-            <div className={styles.cartItems}>2</div>
-          </div>
+              <div className={styles.cartItems}>{quantity}</div>
+            </div>
+          </Link>
         </div>
       </div>
       {/* mobile navbar */}

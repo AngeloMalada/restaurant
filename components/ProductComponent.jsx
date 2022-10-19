@@ -1,10 +1,46 @@
 import styles from "../styles/Product.module.scss";
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/cartSlice";
+import Product from "../pages/product/[id]";
 
 const ProductComponent = ({ singleProduct }) => {
   const [size, setSize] = useState(0);
+  const [price, setPrice] = useState(singleProduct.price[0]);
+  const [extraIngreadients, setExtraIngreadients] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
+  const changePrice = (num) => {
+    setPrice(price + num);
+  };
+
+  const handleSize = (i) => {
+    const diff = singleProduct.price[i] - singleProduct.price[size];
+    setSize(i);
+    changePrice(diff);
+  };
+
+  const handleChange = (e, extra) => {
+    const checked = e.target.checked;
+    if (checked) {
+      changePrice(extra.price);
+      setExtraIngreadients((prev) => [...prev, extra]);
+    } else {
+      changePrice(-extra.price);
+      setExtraIngreadients(
+        extraIngreadients.filter(
+          (extraIngreadient) => extraIngreadient._id !== extra._id
+        )
+      );
+    }
+  };
+  const handleClick = () => {
+    dispatch(
+      addProduct({ ...singleProduct, price, extraIngreadients, quantity })
+    );
+  };
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -19,65 +55,48 @@ const ProductComponent = ({ singleProduct }) => {
       </div>
       <div className={styles.details}>
         <h1 className={styles.title}>{singleProduct.title}</h1>
-        <span className={styles.price}>${singleProduct.price[size]}</span>
+        <span className={styles.price}>${price}</span>
         <p className={styles.desc}>{singleProduct.description}</p>
         <h3 className={styles.choose}>Choose the size</h3>
         <div className={styles.sizes}>
-          <div className={styles.size} onClick={() => setSize(0)}>
+          <div className={styles.size} onClick={() => handleSize(0)}>
             <Image src='/images/size.png' layout='fill' alt='' />
             <span className={styles.number}>Small</span>
           </div>
-          <div className={styles.size} onClick={() => setSize(1)}>
+          <div className={styles.size} onClick={() => handleSize(1)}>
             <Image src='/images/size.png' layout='fill' alt='' />
             <span className={styles.number}>Medium</span>
           </div>
-          <div className={styles.size} onClick={() => setSize(2)}>
+          <div className={styles.size} onClick={() => handleSize(2)}>
             <Image src='/images/size.png' layout='fill' alt='' />
             <span className={styles.number}>Large</span>
           </div>
         </div>
         <h3 className={styles.choose}>Choose additional ingredients</h3>
         <div className={styles.ingredients}>
-          <div className={styles.option}>
-            <input
-              type='checkbox'
-              id='double'
-              name='double'
-              className={styles.checkbox}
-            />
-            <label htmlFor='double'>Double Ingredients</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type='checkbox'
-              id='cheese'
-              name='cheese'
-            />
-            <label htmlFor='cheese'>Extra Cheese</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type='checkbox'
-              id='spicy'
-              name='spicy'
-            />
-            <label htmlFor='spicy'>Spicy Sauce</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type='checkbox'
-              id='garlic'
-              name='garlic'
-            />
-            <label htmlFor='garlic'>Garlic Sauce</label>
-          </div>
+          {singleProduct.extras.map((extra) => (
+            <div className={styles.option} key={extra._id}>
+              <input
+                type='checkbox'
+                id={extra.text}
+                name={extra.text}
+                className={styles.checkbox}
+                onChange={(e) => handleChange(e, extra)}
+              />
+              <label htmlFor='double'>{extra.text}</label>
+            </div>
+          ))}
         </div>
         <div className={styles.add}>
-          <input type='number' defaultValue={1} className={styles.quantity} />
-          <button className={styles.button}>Add to Cart</button>
+          <input
+            onChange={(e) => setQuantity(e.target.value)}
+            type='number'
+            defaultValue={1}
+            className={styles.quantity}
+          />
+          <button className={styles.button} onClick={handleClick}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
