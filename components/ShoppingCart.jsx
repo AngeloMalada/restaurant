@@ -18,8 +18,8 @@ const ShoppingCart = () => {
               <th>Quantity</th>
               <th>Total</th>
             </tr>
-            {cart.products.map((product) => (
-              <tr className={styles.tr}>
+            {cart.products.map((product, i) => (
+              <tr className={styles.tr} key={i}>
                 <td>
                   <div className={styles.imgContainer}>
                     <Image
