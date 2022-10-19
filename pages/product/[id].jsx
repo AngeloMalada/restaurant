@@ -1,14 +1,26 @@
 import React from "react";
 import ProductComponent from "../../components/ProductComponent";
 import Navbar from "../../components/Navbar";
+import axios from "axios";
 
-const Product = () => {
+const Product = ({ singleProduct }) => {
   return (
     <div>
       <Navbar />
-      <ProductComponent />
+      <ProductComponent singleProduct={singleProduct} />
     </div>
   );
 };
 
 export default Product;
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(
+    `http://localhost:3000/api/products/${params.id}`
+  );
+  return {
+    props: {
+      singleProduct: res.data,
+    },
+  };
+};

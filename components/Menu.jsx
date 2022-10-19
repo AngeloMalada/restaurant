@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Menu.module.scss";
 import MealCard from "./MealCard";
 
-const Menu = () => {
+const Menu = ({ productList }) => {
   return (
     <div className={styles.container}>
       <div className={styles.textBg}>
@@ -15,16 +15,14 @@ const Menu = () => {
           Explicabo, aut.
         </p>
       </div>
+
       <div className={styles.wrapper}>
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
-        <MealCard />
+        {productList
+          .slice(-6)
+          .reverse()
+          .map((product) => (
+            <MealCard key={product._id} product={product} />
+          ))}
       </div>
     </div>
   );

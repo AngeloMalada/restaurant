@@ -2,27 +2,25 @@ import styles from "../styles/Product.module.scss";
 import Image from "next/image";
 import { useState } from "react";
 
-const ProductComponent = () => {
+const ProductComponent = ({ singleProduct }) => {
   const [size, setSize] = useState(0);
-  const burger = {
-    id: 1,
-    img: "/images/pizza.png",
-    name: "Smokehouse",
-    price: [19.9, 23.9, 27.9],
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu purus, rhoncus fringilla vestibulum vel, dignissim vel ante. Nulla facilisi. Nullam a urna sit amet tellus pellentesque egestas in in ante.",
-  };
 
   return (
     <div className={styles.container}>
       <div className={styles.image}>
         <div className={styles.imgContainer}>
-          <Image src={burger.img} objectFit='contain' layout='fill' alt='' />
+          <Image
+            src={singleProduct.image}
+            objectFit='contain'
+            layout='fill'
+            alt=''
+          />
         </div>
       </div>
       <div className={styles.details}>
-        <h1 className={styles.title}>{burger.name}</h1>
-        <span className={styles.price}>${burger.price[size]}</span>
-        <p className={styles.desc}>{burger.desc}</p>
+        <h1 className={styles.title}>{singleProduct.title}</h1>
+        <span className={styles.price}>${singleProduct.price[size]}</span>
+        <p className={styles.desc}>{singleProduct.description}</p>
         <h3 className={styles.choose}>Choose the size</h3>
         <div className={styles.sizes}>
           <div className={styles.size} onClick={() => setSize(0)}>
