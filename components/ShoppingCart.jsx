@@ -14,13 +14,16 @@ const ShoppingCart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
-    const response = await fetch("http://localhost:3000/api/stripe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cart),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart),
+      }
+    );
     if (response.statusCode === 500) {
       return;
     }
