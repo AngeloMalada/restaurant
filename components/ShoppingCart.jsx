@@ -1,10 +1,34 @@
 import styles from "../styles/ShoppingCart.module.scss";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import getStripe from "../utils/getStripe";
+import axios from "axios";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  // const handleRemove = (id) => {
+  //   dispatch(removeProduct(id));
+  // };
+  console.log(cart);
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+    const response = await fetch("http://localhost:3000/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cart),
+    });
+    if (response.statusCode === 500) {
+      return;
+    }
+    const data = await response.json();
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+    console.log(cart);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.orderDetails}>
@@ -44,7 +68,8 @@ const ShoppingCart = () => {
                   <span className={styles.price}>{product.price}</span>
                 </td>
                 <td className={styles.item}>
-                  <span className={styles.quantity}>{product.quantity}</span>
+                  <span className={styles.quantity}>{product.quantity} </span>
+                  {/* <span onClick={handleRemove}>remove</span> */}
                 </td>
                 <td className={styles.item}>
                   <span className={styles.total}>
@@ -70,7 +95,9 @@ const ShoppingCart = () => {
             <b className={styles.totalTextTitle}>Total:</b>
             {cart.total}€
           </div>
-          <button className={styles.button}>CHECKOUT NOW!</button>
+          <button className={styles.button} onClick={handleCheckout}>
+            CHECKOUT NOW!
+          </button>
         </div>
       </div>
     </div>
