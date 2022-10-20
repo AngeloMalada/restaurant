@@ -9,6 +9,7 @@ const ShoppingCart = () => {
   const cart = useSelector((state) => state.cart);
   // const handleRemove = (id) => {
   //   dispatch(removeProduct(id));
+  //blablabla
   // };
   console.log(cart);
 
