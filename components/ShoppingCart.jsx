@@ -3,15 +3,11 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import getStripe from "../utils/getStripe";
 import axios from "axios";
+import { reset } from "../redux/cartSlice";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  // const handleRemove = (id) => {
-  //   dispatch(removeProduct(id));
-  //blablabla
-  // };
-  console.log(cart);
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -32,6 +28,10 @@ const ShoppingCart = () => {
 
     stripe.redirectToCheckout({ sessionId: data.id });
     console.log(cart);
+  };
+
+  const handleReset = () => {
+    dispatch(reset());
   };
   return (
     <div className={styles.container}>
@@ -73,7 +73,6 @@ const ShoppingCart = () => {
                 </td>
                 <td className={styles.item}>
                   <span className={styles.quantity}>{product.quantity} </span>
-                  {/* <span onClick={handleRemove}>remove</span> */}
                 </td>
                 <td className={styles.item}>
                   <span className={styles.total}>
@@ -101,6 +100,9 @@ const ShoppingCart = () => {
           </div>
           <button className={styles.button} onClick={handleCheckout}>
             CHECKOUT NOW!
+          </button>
+          <button className={styles.button} onClick={handleReset}>
+            CLEAR CART
           </button>
         </div>
       </div>
