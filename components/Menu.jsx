@@ -15,9 +15,10 @@ const Menu = ({ productList }) => {
           Explicabo, aut.
         </p>
       </div>
-
+      <h1 className={styles.newItems}>New Items</h1>
       <div className={styles.wrapper}>
         {productList
+          .filter((product) => product.category !== "featured")
           .slice(-6)
           .reverse()
           .map((product) => (

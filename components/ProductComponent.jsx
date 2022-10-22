@@ -40,6 +40,7 @@ const ProductComponent = ({ singleProduct }) => {
     dispatch(
       addProduct({ ...singleProduct, price, extraIngreadients, quantity })
     );
+    console.log(extraIngreadients);
   };
   return (
     <div className={styles.container}>

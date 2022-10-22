@@ -14,6 +14,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    featuredText: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
       required: true,
@@ -31,6 +35,9 @@ const ProductSchema = new mongoose.Schema(
           },
         },
       ],
+    },
+    category: {
+      type: String,
     },
   },
   { timestamps: true }

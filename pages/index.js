@@ -19,7 +19,7 @@ export default function Home({ productList }) {
       <div className={styles.red}>
         <Navbar />
         {/* <Slider /> */}
-        <Slider />
+        <Slider productList={productList} />
         <Menu productList={productList} />
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import getStripe from "../utils/getStripe";
 import axios from "axios";
 import { reset } from "../redux/cartSlice";
+import { decrement, increment, removeProduct } from "../redux/cartSlice";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,21 @@ const ShoppingCart = () => {
   const handleReset = () => {
     dispatch(reset());
   };
+
+  //handle decrement
+  const handleDecrement = (id, extraIngreadients, price, total) => {
+    dispatch(decrement({ id, extraIngreadients, price, total }));
+  };
+  //handle increment
+  const handleIncrement = (id, extraIngreadients, price, total) => {
+    dispatch(increment({ id, extraIngreadients, price, total }));
+  };
+
+  //handle remove
+  const handleRemove = (id, extraIngreadients, price, total) => {
+    dispatch(removeProduct({ id, extraIngreadients, price, total }));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.orderDetails}>
@@ -72,7 +88,47 @@ const ShoppingCart = () => {
                   <span className={styles.price}>{product.price}</span>
                 </td>
                 <td className={styles.item}>
-                  <span className={styles.quantity}>{product.quantity} </span>
+                  {/* decrement button */}
+                  <button
+                    onClick={() =>
+                      handleDecrement(
+                        product._id,
+                        product.extraIngreadients,
+                        product.price,
+                        product.price * product.quantity
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                  <span className={styles.quantity}>{product.quantity}</span>
+                  {/* increment button */}
+                  <button
+                    onClick={() =>
+                      handleIncrement(
+                        product._id,
+                        product.extraIngreadients,
+                        product.price,
+                        product.price * product.quantity
+                      )
+                    }
+                  >
+                    +
+                  </button>
+                  {/* remove buton */}
+                  <button
+                    onClick={() =>
+                      handleRemove(
+                        product._id,
+                        product.extraIngreadients,
+                        product.price,
+                        product.price * product.quantity
+                      )
+                    }
+                  >
+                    {" "}
+                    X{" "}
+                  </button>
                 </td>
                 <td className={styles.item}>
                   <span className={styles.total}>

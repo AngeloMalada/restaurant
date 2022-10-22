@@ -23,10 +23,6 @@ export default async function handler(req, res) {
               },
               unit_amount: product.price * 100,
             },
-            adjustable_quantity: {
-              enabled: true,
-              minimum: 1,
-            },
             quantity: product.quantity,
           };
         }),
