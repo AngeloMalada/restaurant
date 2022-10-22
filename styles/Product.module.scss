@@ -33,8 +33,14 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+    .outerWrapper {
+      display: flex;
+      flex-direction: column;
+      min-width: 30%;
+      text-align: center;
+    }
     .sizes {
-      width: 40%;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;

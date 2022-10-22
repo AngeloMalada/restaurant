@@ -58,21 +58,25 @@ const ProductComponent = ({ singleProduct }) => {
         <h1 className={styles.title}>{singleProduct.title}</h1>
         <span className={styles.price}>${price}</span>
         <p className={styles.desc}>{singleProduct.description}</p>
-        <h3 className={styles.choose}>Choose the size</h3>
-        <div className={styles.sizes}>
-          <div className={styles.size} onClick={() => handleSize(0)}>
-            <Image src='/images/size.png' layout='fill' alt='' />
-            <span className={styles.number}>Small</span>
+        {singleProduct.price.length > 1 && (
+          <div className={styles.outerWrapper}>
+            <h3 className={styles.choose}>Choose the size</h3>
+            <div className={styles.sizes}>
+              <div className={styles.size} onClick={() => handleSize(0)}>
+                <Image src='/images/size.png' layout='fill' alt='' />
+                <span className={styles.number}>Small</span>
+              </div>
+              <div className={styles.size} onClick={() => handleSize(1)}>
+                <Image src='/images/size.png' layout='fill' alt='' />
+                <span className={styles.number}>Medium</span>
+              </div>
+              <div className={styles.size} onClick={() => handleSize(2)}>
+                <Image src='/images/size.png' layout='fill' alt='' />
+                <span className={styles.number}>Large</span>
+              </div>
+            </div>
           </div>
-          <div className={styles.size} onClick={() => handleSize(1)}>
-            <Image src='/images/size.png' layout='fill' alt='' />
-            <span className={styles.number}>Medium</span>
-          </div>
-          <div className={styles.size} onClick={() => handleSize(2)}>
-            <Image src='/images/size.png' layout='fill' alt='' />
-            <span className={styles.number}>Large</span>
-          </div>
-        </div>
+        )}
         <h3 className={styles.choose}>Choose additional ingredients</h3>
         <div className={styles.ingredients}>
           {singleProduct.extras.map((extra) => (
