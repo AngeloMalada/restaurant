@@ -70,12 +70,21 @@ const Navbar = () => {
           className={styles.hamburgerMenu}
           onClick={handleOpenHamburger}
         />
-        <Image
-          className={styles.image}
-          src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
-          height='80px'
-          width='80px'
-        />
+        <Link href='/'>
+          <Image
+            className={styles.image}
+            src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
+            height='60px'
+            width='60px'
+          />
+        </Link>
+        <Link href='/cart'>
+          <div className={styles.cart}>
+            <HiOutlineShoppingCart className={styles.cartIcon} />
+
+            <div className={styles.cartItems}>{quantity}</div>
+          </div>
+        </Link>
       </div>
       {/* show hamburgermenu when openhamburger variable is set to true and dont show it when its false,some nice animation with it aswell */}
       {openHambuger && (

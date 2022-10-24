@@ -8,6 +8,8 @@
 
     .table {
       width: 100%;
+      table-layout: fixed;
+      display: table;
       border-spacing: 20px;
 
       .imgContainer {
@@ -66,17 +68,49 @@
   .container {
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-
+    width: 100%;
+    padding: 0;
     .orderDetails {
-      width: 100%;
+      max-width: 100%;
       margin-bottom: 50px;
+      .table {
+        font-size: small;
+        .trTitle {
+          .trProduct {
+            display: none;
+          }
+        }
+        .tr {
+          .imageTd {
+            display: none;
+          }
+          .item {
+            font-size: small;
+            .name {
+              font-size: small;
+            }
+            .price {
+              font-size: small;
+            }
+            .quantity {
+              text-align: center;
+              font-size: x-small;
+            }
+            .total {
+              font-size: small;
+            }
+          }
+        }
+      }
     }
 
     .checkout {
       width: 100%;
       height: 100%;
       margin-top: 50px;
+      .wrapper {
+        width: auto;
+      }
     }
   }
 }

@@ -5,6 +5,8 @@ import getStripe from "../utils/getStripe";
 import axios from "axios";
 import { reset } from "../redux/cartSlice";
 import { decrement, increment, removeProduct } from "../redux/cartSlice";
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+import { MdOutlineClear } from "react-icons/md";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const ShoppingCart = () => {
         <table className={styles.table}>
           <tbody>
             <tr className={styles.trTitle}>
-              <th>Product</th>
+              <th className={styles.trProduct}>Product</th>
               <th>Name</th>
               <th>Extras</th>
               <th>Price</th>
@@ -64,7 +66,7 @@ const ShoppingCart = () => {
             </tr>
             {cart.products.map((product, i) => (
               <tr className={styles.tr} key={i}>
-                <td>
+                <td className={styles.imageTd}>
                   <div className={styles.imgContainer}>
                     <Image
                       src={product.image}
@@ -85,11 +87,11 @@ const ShoppingCart = () => {
                   </span>
                 </td>
                 <td className={styles.item}>
-                  <span className={styles.price}>{product.price}</span>
+                  <span className={styles.price}>EUR {product.price}</span>
                 </td>
                 <td className={styles.item}>
                   {/* decrement button */}
-                  <button
+                  <AiFillMinusCircle
                     onClick={() =>
                       handleDecrement(
                         product._id,
@@ -98,12 +100,11 @@ const ShoppingCart = () => {
                         product.price * product.quantity
                       )
                     }
-                  >
-                    -
-                  </button>
+                  />
+
                   <span className={styles.quantity}>{product.quantity}</span>
                   {/* increment button */}
-                  <button
+                  <AiFillPlusCircle
                     onClick={() =>
                       handleIncrement(
                         product._id,
@@ -112,11 +113,10 @@ const ShoppingCart = () => {
                         product.price * product.quantity
                       )
                     }
-                  >
-                    +
-                  </button>
+                  />
+
                   {/* remove buton */}
-                  <button
+                  <MdOutlineClear
                     onClick={() =>
                       handleRemove(
                         product._id,
@@ -125,10 +125,7 @@ const ShoppingCart = () => {
                         product.price * product.quantity
                       )
                     }
-                  >
-                    {" "}
-                    X{" "}
-                  </button>
+                  />
                 </td>
                 <td className={styles.item}>
                   <span className={styles.total}>

@@ -144,11 +144,38 @@ $icon-medium: 24px;
       align-items: center;
       justify-content: center;
       position: relative;
+      .cart {
+        display: flex;
+        position: absolute;
+        right: 20px;
+
+        .cartIcon {
+          color: white;
+          height: 24px;
+          width: 24px;
+        }
+        .cartItems {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: white;
+          padding: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          color: black;
+        }
+      }
 
       .hamburgerMenu {
         position: absolute;
         left: 10px;
         color: white;
+        font-size: 30px;
       }
     }
   }
