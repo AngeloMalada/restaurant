@@ -3,7 +3,6 @@ import Image from "next/image";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.scss";
-import { logo } from "../images/logo.svg";
 
 import Menu from "../components/Menu";
 import axios from "axios";
