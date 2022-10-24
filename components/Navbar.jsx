@@ -3,7 +3,7 @@ import styles from "../styles/Navbar.module.scss";
 import { BsFillTelephoneOutboundFill } from "react-icons/bs";
 import { MdFastfood } from "react-icons/md";
 import Image from "next/image";
-import { logo } from "../images/logo.svg";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { motion } from "framer-motion";
