@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { reset } from "../redux/cartSlice";
+import styles from "../styles/Success.module.scss";
 
 const NewestOrder = () => {
   const [order, setOrder] = useState("");
@@ -49,20 +50,30 @@ const NewestOrder = () => {
                 <h3>{details.customer}</h3>
                 <h3>{details.total}</h3>
                 {/* map over details and show titles */}
-                {details.title.map((detail) => {
-                  return (
-                    <div>
-                      <h3>{detail}</h3>
-                    </div>
-                  );
-                })}
-                {details.extras.map((detail) => {
-                  return (
-                    <div>
-                      <h3>{detail} </h3>
-                    </div>
-                  );
-                })}
+                <div className={styles.outer}>
+                  <div>
+                    {details.title.map((detail) => {
+                      return (
+                        <div>
+                          <h3 className={styles.detail}>{detail}</h3>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div>
+                    {details.extras.map((detail) => {
+                      return (
+                        <div>
+                          {/* make every text item go into new line in h3
+                           */}
+                          <h3 className={styles.detail}>
+                            {detail.join(" , ")}
+                          </h3>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             );
           })}

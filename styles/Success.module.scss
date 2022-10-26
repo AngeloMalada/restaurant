@@ -1,0 +1,20 @@
+.extra {
+  display: flex;
+  flex-direction: column;
+}
+
+.titles {
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+}
+
+.detail {
+  height: 24px;
+}
+
+.outer {
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+}
