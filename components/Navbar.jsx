@@ -19,6 +19,7 @@ const Navbar = () => {
   };
 
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user);
 
   return (
     // main div
@@ -36,12 +37,12 @@ const Navbar = () => {
             <li className={styles.listItem}>dobrodosli</li>
             <li className={styles.listItem}>jelovnik</li>
             <li className={styles.listItem}>
-              <Link href='/'>
+              <Link href="/">
                 <Image
                   className={styles.image}
-                  src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
-                  height='80px'
-                  width='80px'
+                  src="https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg"
+                  height="80px"
+                  width="80px"
                 />
               </Link>
               {/* <MdFastfood className={styles.icon} /> */}
@@ -55,7 +56,15 @@ const Navbar = () => {
         </div> */}
         <div className={styles.item}>
           <p className={styles.text}>kontakt</p>
-          <Link href='/cart'>
+          {user.user ? (
+            <p>{user.user.userName}</p>
+          ) : (
+            <Link href="/login">
+              <p>Login</p>
+            </Link>
+          )}
+
+          <Link href="/cart">
             <div className={styles.cart}>
               <HiOutlineShoppingCart className={styles.cartIcon} />
 
@@ -70,15 +79,15 @@ const Navbar = () => {
           className={styles.hamburgerMenu}
           onClick={handleOpenHamburger}
         />
-        <Link href='/'>
+        <Link href="/">
           <Image
             className={styles.image}
-            src='https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg'
-            height='60px'
-            width='60px'
+            src="https://batak-grill.hr/wp-content/uploads/2020/05/Batak-logo.svg"
+            height="60px"
+            width="60px"
           />
         </Link>
-        <Link href='/cart'>
+        <Link href="/cart">
           <div className={styles.cart}>
             <HiOutlineShoppingCart className={styles.cartIcon} />
 

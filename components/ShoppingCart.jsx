@@ -11,6 +11,7 @@ import { MdOutlineClear } from "react-icons/md";
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -21,7 +22,7 @@ const ShoppingCart = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(cart),
+        body: JSON.stringify({ cart: cart, user: user }),
       }
     );
     if (response.statusCode === 500) {
@@ -30,7 +31,6 @@ const ShoppingCart = () => {
     const data = await response.json();
 
     stripe.redirectToCheckout({ sessionId: data.id });
-    console.log(cart);
   };
 
   const handleReset = () => {
@@ -40,6 +40,7 @@ const ShoppingCart = () => {
   //handle decrement
   const handleDecrement = (id, extraIngreadients, price, total) => {
     dispatch(decrement({ id, extraIngreadients, price, total }));
+    console.log(user);
   };
   //handle increment
   const handleIncrement = (id, extraIngreadients, price, total) => {
@@ -70,9 +71,9 @@ const ShoppingCart = () => {
                   <div className={styles.imgContainer}>
                     <Image
                       src={product.image}
-                      layout='fill'
-                      objectFit='contain'
-                      alt=''
+                      layout="fill"
+                      objectFit="contain"
+                      alt=""
                     />
                   </div>
                 </td>

@@ -20,9 +20,13 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    method: {
-      type: Number,
-      required: true,
+    //add titles from metadata as object
+    title: {
+      type: Object,
+    },
+
+    extras: {
+      type: Object,
     },
   },
   { timestamps: true }
