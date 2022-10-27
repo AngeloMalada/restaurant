@@ -10,11 +10,16 @@
 }
 
 .detail {
-  height: 24px;
+  height: 50px;
 }
 
 .outer {
   display: flex;
   flex-direction: row;
-  gap: 200px;
+  gap: 50px;
+  padding-left: 20px;
+}
+
+.container {
+  height: auto;
 }

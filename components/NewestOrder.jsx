@@ -35,40 +35,39 @@ const NewestOrder = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       Success
       <button onClick={handleOrder}>Order</button>
       <div>
-        <h3>
-          {user.user.userName} {user.user.email}
-        </h3>
+        <h1>Order Summary</h1>
+
+        <h3>{user.user.userName}</h3>
         {order !== "" &&
           order.slice(-1).map((details) => {
             return (
               <div>
-                <h1>proizvodi</h1>
                 <h3>{details.customer}</h3>
-                <h3>{details.total}</h3>
+                <h3>{details.total} EUR</h3>
                 {/* map over details and show titles */}
                 <div className={styles.outer}>
                   <div>
+                    <h1>Products</h1>
                     {details.title.map((detail) => {
                       return (
                         <div>
-                          <h3 className={styles.detail}>{detail}</h3>
+                          <p className={styles.detail}>{detail}</p>
                         </div>
                       );
                     })}
                   </div>
                   <div>
+                    <h1>Extras</h1>
                     {details.extras.map((detail) => {
                       return (
                         <div>
                           {/* make every text item go into new line in h3
                            */}
-                          <h3 className={styles.detail}>
-                            {detail.join(" , ")}
-                          </h3>
+                          <p className={styles.detail}>{detail.join(" , ")}</p>
                         </div>
                       );
                     })}
