@@ -53,7 +53,14 @@ export default async function handler(req, res) {
           extraIngredients: JSON.stringify(
             req.body.cart.products.map((product) => {
               return product.extraIngreadients.map(
-                (extraIngredient) => extraIngredient.text
+                // (extraIngredient) => extraIngredient.text
+                //add extra ingredient text and id to metadata
+                (extraIngredient) => {
+                  return {
+                    text: extraIngredient.text,
+                    id: extraIngredient._id,
+                  };
+                }
               );
             })
           ),
@@ -62,6 +69,7 @@ export default async function handler(req, res) {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
       res.status(200).json(session);
+      console.log(session);
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
