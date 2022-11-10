@@ -37,9 +37,9 @@ const NewestOrder = () => {
       <div>
         <h1 className={styles.text}>Order Summary</h1>
         {order !== "" &&
-          order.slice(-1).map((details) => {
+          order.slice(-1).map((details, i) => {
             return (
-              <div className={styles.outerDiv}>
+              <div key={i} className={styles.outerDiv}>
                 <div>
                   <h3 className={styles.text}>{user.user.userName}</h3>
                   <h3 className={styles.text}>{details.customer}</h3>
@@ -50,9 +50,9 @@ const NewestOrder = () => {
                 <div className={styles.outer}>
                   <div>
                     <h1 className={styles.text}>Products</h1>
-                    {details.title.map((detail) => {
+                    {details.title.map((detail, i) => {
                       return (
-                        <div>
+                        <div key={i}>
                           <p className={styles.detail}>{detail}</p>
                         </div>
                       );
@@ -61,9 +61,9 @@ const NewestOrder = () => {
                   <div>
                     <h1 className={styles.text}>Extras</h1>
                     <div className={styles.extra}>
-                      {details.extras.map((detail) => {
+                      {details.extras.map((detail, i) => {
                         return (
-                          <div className={styles.titles}>
+                          <div key={i} className={styles.titles}>
                             {/* if detail is empty return "nema dodataka" */}
                             {detail.length === 0 ? (
                               <p className={styles.detail}>No extras</p>
@@ -88,10 +88,12 @@ const NewestOrder = () => {
       </div>
       <div className={styles.status}>
         {order !== "" &&
-          order.slice(-1).map((details) => {
+          order.slice(-1).map((details, i) => {
             return (
               <div>
-                <h1 className={styles.text}>Status: {details.status}</h1>
+                <h1 key={i} className={styles.text}>
+                  Status: {details.status}
+                </h1>
               </div>
             );
           })}
