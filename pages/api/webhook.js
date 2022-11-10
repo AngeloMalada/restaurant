@@ -34,6 +34,7 @@ export default async function handler(req, res) {
         customer: session.customer_details.email,
         address: session.shipping.address.line1,
         total: session.amount_total / 100,
+        status: session.metadata.status,
       });
 
       res.status(200).json(order);

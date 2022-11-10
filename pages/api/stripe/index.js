@@ -52,18 +52,15 @@ export default async function handler(req, res) {
           //add extra ingredients to metadata
           extraIngredients: JSON.stringify(
             req.body.cart.products.map((product) => {
-              return product.extraIngreadients.map(
-                // (extraIngredient) => extraIngredient.text
-                //add extra ingredient text and id to metadata
-                (extraIngredient) => {
-                  return {
-                    text: extraIngredient.text,
-                    id: extraIngredient._id,
-                  };
-                }
-              );
+              return product.extraIngreadients.map((extraIngredient) => {
+                return {
+                  text: extraIngredient.text,
+                  id: extraIngredient._id,
+                };
+              });
             })
           ),
+          status: 0,
         },
       };
       // Create Checkout Sessions from body params.

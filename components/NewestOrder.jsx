@@ -21,8 +21,6 @@ const NewestOrder = () => {
     );
 
     setOrder(response.data);
-    console.log(order);
-    console.log(response.data);
 
     //use effect and trigger handleOrder
 
@@ -36,22 +34,22 @@ const NewestOrder = () => {
 
   return (
     <div className={styles.container}>
-      Success
-      <button onClick={handleOrder}>Order</button>
       <div>
-        <h1>Order Summary</h1>
-
-        <h3>{user.user.userName}</h3>
+        <h1 className={styles.text}>Order Summary</h1>
         {order !== "" &&
           order.slice(-1).map((details) => {
             return (
-              <div>
-                <h3>{details.customer}</h3>
-                <h3>{details.total} EUR</h3>
+              <div className={styles.outerDiv}>
+                <div>
+                  <h3 className={styles.text}>{user.user.userName}</h3>
+                  <h3 className={styles.text}>{details.customer}</h3>
+                  <h3 className={styles.text}>{details.total} EUR</h3>
+                  <h3 className={styles.text}>{details.createdAt}</h3>
+                </div>
                 {/* map over details and show titles */}
                 <div className={styles.outer}>
                   <div>
-                    <h1>Products</h1>
+                    <h1 className={styles.text}>Products</h1>
                     {details.title.map((detail) => {
                       return (
                         <div>
@@ -61,18 +59,39 @@ const NewestOrder = () => {
                     })}
                   </div>
                   <div>
-                    <h1>Extras</h1>
-                    {details.extras.map((detail) => {
-                      return (
-                        <div>
-                          {/* make every text item go into new line in h3
-                           */}
-                          <p className={styles.detail}>{detail.join(" , ")}</p>
-                        </div>
-                      );
-                    })}
+                    <h1 className={styles.text}>Extras</h1>
+                    <div className={styles.extra}>
+                      {details.extras.map((detail) => {
+                        return (
+                          <div className={styles.titles}>
+                            {/* if detail is empty return "nema dodataka" */}
+                            {detail.length === 0 ? (
+                              <p className={styles.detail}>No extras</p>
+                            ) : (
+                              detail.map((extra) => {
+                                return (
+                                  <p key={extra.id} className={styles.detail}>
+                                    {extra.text}
+                                  </p>
+                                );
+                              })
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
+              </div>
+            );
+          })}
+      </div>
+      <div className={styles.status}>
+        {order !== "" &&
+          order.slice(-1).map((details) => {
+            return (
+              <div>
+                <h1 className={styles.text}>Status: {details.status}</h1>
               </div>
             );
           })}
