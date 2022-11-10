@@ -90,10 +90,8 @@ const NewestOrder = () => {
         {order !== "" &&
           order.slice(-1).map((details, i) => {
             return (
-              <div>
-                <h1 key={i} className={styles.text}>
-                  Status: {details.status}
-                </h1>
+              <div key={i}>
+                <h1 className={styles.text}>Status: {details.status}</h1>
               </div>
             );
           })}
